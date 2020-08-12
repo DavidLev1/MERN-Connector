@@ -24,4 +24,10 @@ app.get('/', (req, res) => res.send('API Running'));
 const PORT = process.env.PORT || 5000;
 
 // npm run server
+// npm run dev - to run client and server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+//  Natalia123
+// nabtab45dom
+
+// mongodb+srv://Natalia123:nabtab45dom@humanconnector.fvw0h.mongodb.net/PrivateConnections?retryWrites=true&w=majority

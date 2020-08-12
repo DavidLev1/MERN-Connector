@@ -53,7 +53,7 @@ router.post(
       // See if user exists in 'users' collection in MongoDB
       if (user) {
         return res.status(400).json({
-          errors: [{ msg: `User already exists` }],
+          errors: [{ msg: `User with ${email} email already exists` }],
           //errors: [{ msg: `User with ${email} email already exists` }],
         });
       }

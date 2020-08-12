@@ -74,8 +74,8 @@ router.post(
       // 'password' - plain password user types to log in
       // 'user.password' - incripted password of registered user
       const isMatch = await bcrypt.compare(password, user.password);
-      console.log('Encrypted Password: ', user.password);
-      console.log('Plain Password: ', password);
+      // console.log('Encrypted Password: ', user.password);
+      // console.log('Plain Password: ', password);
 
       if (!isMatch) {
         return res.status(400).json({
