@@ -10,7 +10,7 @@ import {
 const initialState = {
   profile: null,
   profiles: [],
-  repos: [],
+  repos: [], // Github repos
   loading: true,
   error: {},
 };
@@ -31,7 +31,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
 
-        // 'profiles' array now has al the profiles sended by server
+        // 'profiles' array now has all the profiles sended by server
         // ('api/profile' GET request)
         profiles: payload,
 
@@ -43,6 +43,7 @@ export default function (state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
+        profile: null, // Add this
       };
 
     case CLEAR_PROFILE:

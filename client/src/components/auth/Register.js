@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from 'react';
-import { connect } from 'react-redux'; // Connect Redux to component
+import { connect } from 'react-redux'; // Connect Redux to this component
 import { Link, Redirect } from 'react-router-dom'; // Use routes of react-router
+
+// Can use that actions by this component because by 'connect' method
+// we connecting this component to the Redux
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
+
 import PropTypes from 'prop-types';
 
 //import axios from 'axios';
@@ -27,6 +31,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       // Calling 'setAlert' action/function in actions/alert.js file
       // so now state.alert.msg = 'Passwords don't match', state.alert.alertType = 'danger'
+      // (because setAlert action activates 'alert' reducer by 'dispatch')
       setAlert("Passwords don't match", 'danger');
     } else {
       //console.log(formData);
@@ -46,7 +51,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       //     };
       //     const body = JSON.stringify(newUser);
       //     const res = await axios.post('/api/users', body, config);
-      //     console.log(res.data);
+      //     console.log(res.data);  // The user token
       //   } catch (err) {
       //     console.error(err.response.data);
       //   }
@@ -72,7 +77,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='name'
             value={name}
             onChange={(e) => onChange(e)}
-            //required
+            required
           />
         </div>
         <div className='form-group'>
@@ -82,7 +87,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
-            //required
+            required
           />
           <small className='form-text'>
             This site uses Gravatar so if you want a profile image, use a
@@ -96,7 +101,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
-            //minLength='6'
+            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -106,13 +111,16 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             name='password2'
             value={password2}
             onChange={(e) => onChange(e)}
-            //minLength='6'
+            minLength='6'
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
+        Already have an account?{' '}
+        <span style={{ color: 'blue' }}>
+          <Link to='/login'>Sign In</Link>
+        </span>
       </p>
     </Fragment>
   );

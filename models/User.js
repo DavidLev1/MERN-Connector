@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const getFormattedDate = require('../utils/date-format.js');
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -18,8 +19,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
-    default: Date.now, // To get current date and time
+    // type: Date,
+    // default: Date.now, // To get current date and time
+    type: String,
+    default: getFormattedDate(new Date()),
   },
 });
 

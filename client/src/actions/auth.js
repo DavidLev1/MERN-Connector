@@ -13,7 +13,7 @@ import {
 
 import setAuthToken from '../utils/setAuthToken';
 
-// Load User
+// Load User (check if user loaded successfully and only then gives its data)
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setAuthToken(localStorage.token);
 
@@ -61,7 +61,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      console.log(errors[0].msg);
+      //console.log(errors[0].msg);
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Landing = ({ isAuthenticated }) => {
+  // When user logged in, not allow going to landing page
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
@@ -12,10 +13,10 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Developer Connector</h1>
+          <h1 className='x-large'>People Connector</h1>
           <p className='lead'>
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Create a profile/portfolio, share posts and connect with other
+            people
           </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>

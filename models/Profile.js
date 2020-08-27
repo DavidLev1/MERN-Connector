@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const getFormattedDate = require('../utils/date-format.js');
 
 const ProfileSchema = new mongoose.Schema({
   // Reference to 'user' model, cause every profile should be associated with user
@@ -108,8 +109,10 @@ const ProfileSchema = new mongoose.Schema({
     },
   },
   date: {
-    type: Date,
-    default: Date.now,
+    // type: Date,
+    // default: Date.now,
+    type: String,
+    default: getFormattedDate(new Date()),
   },
 });
 

@@ -3,20 +3,25 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteExperience } from '../../actions/profile';
+import { sortByDates } from '../../utils/sortings/objsArr';
 
 const Experience = ({ experience, deleteExperience }) => {
+  sortByDates(experience);
+  //console.log(experience);
+
   const experiences = experience.map((exp) => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
       <td className='hide-sm'>{exp.title}</td>
       <td>
-        <Moment format='YYYY/MM/DD'>{exp.from}</Moment> -{' '}
+        <Moment format='DD/MM/YYYY'>{exp.from}</Moment> -{' '}
         {exp.to === null ? (
           'Now'
         ) : (
-          <Moment format='YYYY/MM/DD'>{exp.to}</Moment>
+          <Moment format='DD/MM/YYYY'>{exp.to}</Moment>
         )}
       </td>
+      <td className='hide-sm'>{exp.description}</td>
 
       <td>
         <button
@@ -38,6 +43,7 @@ const Experience = ({ experience, deleteExperience }) => {
             <th>Company</th>
             <th className='hide-sm'>Title</th>
             <th className='hide-sm'>Years</th>
+            <th className='hide-sm'>Description</th>
             <th />
           </tr>
         </thead>

@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
+import { sortObjsArrByProperty } from '../../utils/sortings/objsArr';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
+    // Run getProfiles method once only when component loaded
     getProfiles();
   }, [getProfiles]);
+
+  sortObjsArrByProperty(profiles, 'user.name');
 
   return (
     <Fragment>
@@ -16,10 +20,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large-text-primary'>Developers(people)</h1>
+          <h1 className='large-text-primary'>People</h1>
           <p className='lead'>
             <i className='fab fa-connectdevelop'></i>
-            Browse and connect with developers
+            Browse and connect with people
           </p>
           <div className='profiles'>
             {profiles.length > 0 ? (

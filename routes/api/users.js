@@ -6,7 +6,7 @@
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
-const bcrypt = require('bcryptjs'); // To incript user password
+const bcrypt = require('bcryptjs'); // To encrypt user password
 const jwt = require('jsonwebtoken'); // Access to private/protected routes
 const config = require('config'); // To get contents from 'config' directory
 const { check, validationResult } = require('express-validator');
@@ -54,7 +54,6 @@ router.post(
       if (user) {
         return res.status(400).json({
           errors: [{ msg: `User with ${email} email already exists` }],
-          //errors: [{ msg: `User with ${email} email already exists` }],
         });
       }
 

@@ -1,10 +1,17 @@
+html body {
+  background-color: #ddf1df;
+}
+
 /* Global Styles */
 :root {
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  --primary-color: #0b7080;
+  /* --primary-color: linear-gradient(90deg, #0b4255 0%, #74a0b8 100%); */
+  --dark-color: #033027;
+  --light-color: #e0c47b;
+  /* --light-color: linear-gradient(90deg, #e0c47b 0%, #a3e27b 100%); */
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --headers-color: #d6974c;
 }
 
 * {
@@ -137,6 +144,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 8px;
 }
 
 .badge {
@@ -288,6 +296,9 @@ button {
   color: #0077b5;
 }
 
+.table {
+  margin-top: -30px;
+}
 .table th,
 .table td {
   padding: 1rem;
@@ -333,7 +344,8 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  /* background: url('./img/showcase.jpg') no-repeat center center/cover; */
+  background: url('./img/trees.jpg') no-repeat center center/cover;
   height: 100vh;
 }
 
@@ -574,4 +586,8 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+
+.active-link {
+  color: red;
 }

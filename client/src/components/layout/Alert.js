@@ -17,7 +17,7 @@ Alert.propTypes = {
 
 const mapStateToProps = (state) => ({
   // 'alerts' gets 'state.alert' value (state.alert has msg, alertType and id)
-  // and it's a prop of 'Alert' component
+  // and it's now become a prop of 'Alert' component
   alerts: state.alert,
 });
 

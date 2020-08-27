@@ -47,6 +47,7 @@ const EditProfile = ({
     });
 
     // Run that useEffect only when loading === true
+    // or when we call to getCurrentProfile Redux action
   }, [loading, getCurrentProfile]);
 
   const {
@@ -70,7 +71,7 @@ const EditProfile = ({
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // true = editing
+    // true = editing (not creating a new) profile
     createProfile(formData, history, true);
   };
 
@@ -86,14 +87,17 @@ const EditProfile = ({
         <div className='form-group'>
           <select name='status' value={status} onChange={(e) => onChange(e)}>
             <option value='0'>* Select Professional Status</option>
+            <option value='Biologist'>Biologist</option>
+            <option value='Chemist'>Chemist</option>
             <option value='Developer'>Developer</option>
-            <option value='Junior Developer'>Junior Developer</option>
-            <option value='Senior Developer'>Senior Developer</option>
-            <option value='Manager'>Manager</option>
-            <option value='Student or Learning'>Student or Learning</option>
+            <option value='Farmer'>Farmer</option>
             <option value='Instructor'>Instructor or Teacher</option>
             <option value='Intern'>Intern</option>
-            <option value='Other'>Other</option>
+            <option value='Journalist'>Journalist</option>
+            <option value='Manager'>Manager</option>
+            <option value='Media Man'>Media Man</option>
+            <option value='Medicine Man'>Medicine Man</option>
+            <option value='Student'>Student</option>
           </select>
           <small className='form-text'>
             Give us an idea of where you are at in your career
@@ -143,7 +147,7 @@ const EditProfile = ({
             value={skills}
             onChange={(e) => onChange(e)}
           />
-          <small class='form-text'>
+          <small className='form-text'>
             Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
           </small>
         </div>
@@ -176,9 +180,10 @@ const EditProfile = ({
             type='button'
             className='btn btn-light'
           >
-            Add Social Network Links
+            {displaySocialInputs ? 'Remove ' : 'Add '}
+            Social Network Links
           </button>
-          <span>Optional</span>
+          {!displaySocialInputs && <span>Optional</span>}
         </div>
 
         {displaySocialInputs && (
@@ -240,7 +245,7 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <input type='submit' className='btn btn-primary my-1' value='Submit' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

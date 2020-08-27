@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+//const getFormattedDate = require('../utils/date-format.js');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -54,6 +55,8 @@ const PostSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
+    // type: String,
+    // default: getFormattedDate(new Date()),
   },
 });
 
